@@ -1,0 +1,7 @@
+/vendor/
+/apigen/
+/build/result/
+phploc.phar
+file.sublime-workspace
+file.sublime-project
+/.nbproject/
