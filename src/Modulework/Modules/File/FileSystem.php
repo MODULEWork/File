@@ -1,7 +1,4 @@
-<?php namespace Modulework\Modules\File
-{
-
-}
+<?php namespace Modulework\Modules\File;
 /*
  * (c) Christian Gärtner <christiangaertner.film@googlemail.com>
  * This file is part of the Modulework Framework
@@ -319,6 +316,7 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function getPermissions($path)
 	{
-
+		// TO BE WRITTEN
+		throw new Exception('Unsupported Operation.');
 	}
 }

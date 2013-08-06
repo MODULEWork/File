@@ -19,7 +19,7 @@ class File
 
 	protected $filesystem;
 
-	public function make($path, $verify = false, FileSystemInterface $filesystem = null)
+	public static function open($path, $verify = false, FileSystemInterface $filesystem = null)
 	{
 		return new static($path, $verify, $filesystem);
 	}

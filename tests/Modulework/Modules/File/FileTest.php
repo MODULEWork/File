@@ -7,8 +7,18 @@
  * 
  * This file is meant to be used in PHPUnit Tests
  */
-use Modulework\Modules\Http\File;
+use Modulework\Modules\File\File;
 /**
 * PHPUnit Test
 */
-class FileTest extends PHPUnit_Framework_TestCase { }
+class FileTest extends PHPUnit_Framework_TestCase
+{
+
+	public function testOpen()
+	{
+		$file = File::open('foo');
+
+
+	}
+
+}
