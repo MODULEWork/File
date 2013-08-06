@@ -51,7 +51,7 @@ class File
 
 	public function create()
 	{
-		return $this->filesystem->touch($this->path);
+		return $this->filesystem->create($this->path);
 	}
 
 	public function extension()
@@ -137,6 +137,16 @@ class File
 	public function creationTime()
 	{
 		return $this->filesystem->creationTime($this->path);
+	}
+
+	public function chmod($permissions)
+	{
+		return $this->filesystem->chmod($this->path, $permissions);
+	}
+
+	public function chown($owner)
+	{
+		return $this->filesystem->chown($this->path, $owner);
 	}
 
 	public function setPermissions($permissions)

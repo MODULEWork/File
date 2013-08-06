@@ -12,7 +12,7 @@
 interface FileSystemInterface
 {
 
-	public static function glob($path);
+	public static function glob($path, $flags = 0);
 	public static function files($path);
 	public static function all($path);
 	public static function directories($path);
@@ -22,9 +22,10 @@ interface FileSystemInterface
 	public static function emptyDirectory($path);
 
 	public static function exists($path);
-	public static function touch($path);
+	public static function create($path);
 	public static function extension($path);
 	public static function get($path);
+	public static function getRemote($path);
 	public static function size($path);
 	public static function put($path, $data);
 	public static function append($path, $data);
@@ -40,6 +41,8 @@ interface FileSystemInterface
 	public static function accessTime($path);
 	public static function modifiedTime($path);
 	public static function creationTime($path);
+	public static function chmod($path, $permissions);
+	public static function chown($path, $owner);
 	public static function setPermissions($path, $permissions);
 	public static function getPermissions($path);
 }
