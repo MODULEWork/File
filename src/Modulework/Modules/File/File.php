@@ -31,7 +31,7 @@ class File
 			throw new FileNotFoundException('File not found at "' . $path . '".');
 		}
 
-		$this->$path = (string) $path;
+		$this->path = (string) $path;
 	}
 
 	public function __toString()
@@ -110,7 +110,7 @@ class File
 
 	public function isReadable()
 	{
-		return $this->filesystem->isWritable($this->path);
+		return $this->filesystem->isReadable($this->path);
 	}
 
 	public function isDirectory()
@@ -125,7 +125,7 @@ class File
 
 	public function type()
 	{
-		return $this->filesystem->getType($this->path);
+		return $this->filesystem->type($this->path);
 	}
 
 	public function accessTime()

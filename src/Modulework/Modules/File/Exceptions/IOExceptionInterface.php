@@ -9,5 +9,5 @@
 * IOException
 * Is thrown when a filesystem operation fails.
 */
-interface IOException
+interface IOExceptionInterface
 { }

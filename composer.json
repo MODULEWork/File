@@ -1,8 +1,8 @@
 {
-    "name": "modulework/http",
+    "name": "modulework/file",
     "type": "library",
     "keywords": ["framework"],
-    "description": "HTTP package for the MODULEWork Framework",
+    "description": "File package for the MODULEWork Framework",
     "require-dev": {
     },
     "license": "MIT",
