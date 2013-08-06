@@ -24,7 +24,7 @@ class File
 	{
 		$this->setFilesystem($filesystem);
 		if ($verify && !$this->filesystem->exists($path)) {
-			throw new FileNotFoundException('File not found at "' . $parh . '".');
+			throw new FileNotFoundException('File not found at "' . $path . '".');
 		}
 
 		$this->$path = (string) $path;
