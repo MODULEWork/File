@@ -19,6 +19,10 @@ class File
 
 	protected $filesystem;
 
+	public function make($path, $verify = false, FileSystemInterface $filesystem = null)
+	{
+		return new static($path, $verify, $filesystem);
+	}
 
 	public function __construct($path, $verify = false, FileSystemInterface $filesystem = null)
 	{
