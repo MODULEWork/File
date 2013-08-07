@@ -24,7 +24,7 @@ class File
 		return new static($path, $verify, $filesystem);
 	}
 
-	public function load($path, $verify = false, FileSystemInterface $filesystem = null)
+	public static function load($path, $verify = false, FileSystemInterface $filesystem = null)
 	{
 		return new static($path, $verify, $filesystem);
 	}
