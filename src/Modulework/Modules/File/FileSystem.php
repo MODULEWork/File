@@ -5,6 +5,8 @@
  * License: View distributed LICENSE file
  */
 
+use Modulework\Modules\File\Exceptions\FileNotFoundException;
+
 /**
 * {@inheritdoc}
 */
@@ -141,6 +143,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function extension($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return pathinfo($path, PATHINFO_EXTENSION);
 	}
 
@@ -149,7 +154,7 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function get($path)
 	{
-		if ($this->isFile($path)) return file_get_contents($path);
+		if (self::isFile($path)) return file_get_contents($path);
 
 		throw new FileNotFoundException('File does not exist at "' . $path . '".');
 	}
@@ -167,6 +172,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function size($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return filesize($path);
 	}
 
@@ -183,6 +191,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function append($path, $data)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return file_put_contents($path, $data, FILE_APPEND);
 	}
 
@@ -199,6 +210,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function move($org, $dest)
 	{
+		if (!self::isFile($org)) {
+			throw new FileNotFoundException('File does not exist at "' . $org . '".');
+		}
 		return rename($org, $dest);
 	}
 
@@ -207,6 +221,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function copy($org, $dest)
 	{
+		if (!self::isFile($org)) {
+			throw new FileNotFoundException('File does not exist at "' . $org . '".');
+		}
 		return copy($org, $dest);
 	}
 
@@ -215,6 +232,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function symLink($org, $dest)
 	{
+		if (!self::isFile($org)) {
+			throw new FileNotFoundException('File does not exist at "' . $org . '".');
+		}
 		return symlink($org, $dest);
 	}
 
@@ -223,6 +243,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function isWritable($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return is_writable($path);
 	}
 
@@ -231,6 +254,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function isReadable($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return is_readable($path);
 	}
 
@@ -255,6 +281,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function type($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return filetype($path);
 	}
 
@@ -263,6 +292,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function accessTime($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return fileatime($path);
 	}
 
@@ -271,6 +303,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function modifiedTime($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return filemtime($path);
 	}
 
@@ -279,6 +314,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function creationTime($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return filectime($path);
 	}
 
@@ -287,6 +325,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function chmod($path, $permissions)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		if (is_string($permissions)) {
 			$permissions = '0' . ltrim($permissions, '0');
 			$permissions = octdec($permissions);
@@ -300,6 +341,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function chown($path, $owner)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		return chmod($this->path, $owner);
 	}
 
@@ -308,6 +352,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function setPermissions($path, $permissions)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		self::chmod($path, $permissions);
 	}
 
@@ -316,6 +363,9 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function getPermissions($path)
 	{
+		if (!self::isFile($path)) {
+			throw new FileNotFoundException('File does not exist at "' . $path . '".');
+		}
 		// TO BE WRITTEN
 		throw new Exception('Unsupported Operation.');
 	}
