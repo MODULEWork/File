@@ -5,8 +5,6 @@
  * License: View distributed LICENSE file
  */
 
-use Modulework\Modules\File\Filesystem;
-use Modulework\Modules\File\FileSystemInterface;
 use Modulework\Modules\File\Exceptions\FileNotFoundException;
 
 /**
