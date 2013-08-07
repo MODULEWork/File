@@ -45,7 +45,7 @@ class File
 	public function setFileSystem(FileSystemInterface $filesystem = null)
 	{
 		if ($filesystem === null) {
-			$this->filesystem = new Filesystem;
+			$this->filesystem = new FileSystem;
 		} else {
 			$this->filesystem = $filesystem;
 		}
