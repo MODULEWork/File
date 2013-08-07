@@ -19,7 +19,12 @@ class File
 
 	protected $filesystem;
 
-	public static function open($path, $verify = false, FileSystemInterface $filesystem = null)
+	public static function open($path, $verify = true, FileSystemInterface $filesystem = null)
+	{
+		return new static($path, $verify, $filesystem);
+	}
+
+	public function load($path, $verify = false, FileSystemInterface $filesystem = null)
 	{
 		return new static($path, $verify, $filesystem);
 	}
