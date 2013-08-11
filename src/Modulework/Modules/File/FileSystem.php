@@ -390,7 +390,12 @@ class FileSystem implements FileSystemInterface
 			$permissions = octdec($permissions);
 		}
 
-		return chmod($this->path, $permissions);
+		$ret = chmod($path, $owner);
+		if ($ret === false) {
+			throw new IOException('Could not chmod the file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -401,7 +406,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($path)) {
 			throw new FileNotFoundException('File does not exist at "' . $path . '".');
 		}
-		return chmod($this->path, $owner);
+		$ret = chown($path, $owner);
+		if ($ret === false) {
+			throw new IOException('Could not chown the file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**

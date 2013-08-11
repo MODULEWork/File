@@ -284,11 +284,27 @@ class File
 		return $this->filesystem->creationTime($this->path);
 	}
 
+	/**
+	 * Chmod the file
+	 * @param  string $permissions The new permissions of this file
+	 * @return bool        Whether the chmod was successfull
+	 *
+	 * @throws FileNotFoundException (FileSystemInterface::chmod())
+	 * @throws IOException (FileSystemInterface::chmod())
+	 */
 	public function chmod($permissions)
 	{
 		return $this->filesystem->chmod($this->path, $permissions);
 	}
 
+	/**
+	 * Chown the file
+	 * @param  string $owner The new owner of this file
+	 * @return bool        Whether the chown was successfull
+	 *
+	 * @throws FileNotFoundException (FileSystemInterface::chown())
+	 * @throws IOException (FileSystemInterface::chown())
+	 */
 	public function chown($owner)
 	{
 		return $this->filesystem->chown($this->path, $owner);
