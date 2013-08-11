@@ -6,6 +6,7 @@
  */
 
 use Modulework\Modules\File\Exceptions\FileNotFoundException;
+use Modulework\Modules\File\Exceptions\IOException;
 
 /**
 * {@inheritdoc}
@@ -135,7 +136,12 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function create($path)
 	{
-		return file_put_contents($path, null);
+		$ret = @file_put_contents($path, null);
+		if ($ret === false) {
+			throw new IOException('Could not put data.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -183,7 +189,12 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function put($path, $data)
 	{
-		return file_put_contents($path, $data);
+		$ret = @file_put_contents($path, $data);
+		if ($ret === false) {
+			throw new IOException('Could not put data.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -194,7 +205,13 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($path)) {
 			throw new FileNotFoundException('File does not exist at "' . $path . '".');
 		}
-		return file_put_contents($path, $data, FILE_APPEND);
+		$ret = file_put_contents($path, $data, FILE_APPEND);
+
+		if ($ret === false) {
+			throw new IOException('Could not put data.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -202,7 +219,12 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function delete($path)
 	{
-		return @unlink($path);
+		$ret = @unlink($path);
+		if ($ret === false) {
+			throw new IOException('Could not delete file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -213,7 +235,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($org)) {
 			throw new FileNotFoundException('File does not exist at "' . $org . '".');
 		}
-		return rename($org, $dest);
+		$ret = rename($org, $dest);
+		if ($ret === false) {
+			throw new IOException('Could not move file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -224,7 +251,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($org)) {
 			throw new FileNotFoundException('File does not exist at "' . $org . '".');
 		}
-		return copy($org, $dest);
+		$ret = copy($org, $dest);
+		if ($ret === false) {
+			throw new IOException('Could not copy file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -235,7 +267,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($org)) {
 			throw new FileNotFoundException('File does not exist at "' . $org . '".');
 		}
-		return symlink($org, $dest);
+		$ret = symlink($org, $dest);
+		if ($ret === false) {
+			throw new IOException('Could not symlink file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -284,7 +321,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($path)) {
 			throw new FileNotFoundException('File does not exist at "' . $path . '".');
 		}
-		return filetype($path);
+		$ret = @filetype($path);
+		if ($ret === false) {
+			throw new IOException('Could not get type of file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -295,7 +337,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($path)) {
 			throw new FileNotFoundException('File does not exist at "' . $path . '".');
 		}
-		return fileatime($path);
+		$ret = @fileatime($path);
+		if ($ret === false) {
+			throw new IOException('Could not get access time of file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -306,7 +353,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($path)) {
 			throw new FileNotFoundException('File does not exist at "' . $path . '".');
 		}
-		return filemtime($path);
+		$ret = @filemtime($path);
+		if ($ret === false) {
+			throw new IOException('Could not get modified time of file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -317,7 +369,12 @@ class FileSystem implements FileSystemInterface
 		if (!self::isFile($path)) {
 			throw new FileNotFoundException('File does not exist at "' . $path . '".');
 		}
-		return filectime($path);
+		$ret = @filectime($path);
+		if ($ret === false) {
+			throw new IOException('Could not get creation time of file.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**

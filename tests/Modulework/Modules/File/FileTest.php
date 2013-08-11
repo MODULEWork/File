@@ -170,20 +170,6 @@ class FileTest extends PHPUnit_Framework_TestCase
 		$this->assertTrue($file->isReadable());
 	}
 
-	public function testIsDirectoy()
-	{
-		$file = File::load('foo', false, $this->VFileSystem);
-
-		$this->assertTrue($file->isDirectory());
-	}
-
-	public function testIsFile()
-	{
-		$file = File::load('foo', false, $this->VFileSystem);
-
-		$this->assertTrue($file->isFile());
-	}
-
 	public function testType()
 	{
 		$file = File::load('foo', false, $this->VFileSystem);
