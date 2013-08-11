@@ -21,7 +21,12 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function glob($path, $flags = 0)
 	{
-		return glob($pattern, $flags);
+		$ret = glob($path, $flags);
+		if ($ret === false) {
+			throw new IOExceptionException('Could not glob directory.');
+		} else {
+			return $ret;
+		}
 	}
 
 	/**
@@ -29,7 +34,7 @@ class FileSystem implements FileSystemInterface
 	 */
 	public static function files($path)
 	{
-		$glob = $this->glob($path . '/*');
+		$glob = self::glob($path . '/*');
 
 		if ($glob === false) return array();
 

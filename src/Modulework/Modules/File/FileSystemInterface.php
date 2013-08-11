@@ -11,10 +11,37 @@
 */
 interface FileSystemInterface
 {
-
+	/**
+	 * Glob a directory
+	 * @param  string  $path  The pattern
+	 * @param  integer $flags The flags
+	 * @return array         The files
+	 *
+	 * @throws IOException
+	 */
 	public static function glob($path, $flags = 0);
+
+	/**
+	 * List a files of the given diretory
+	 * @param  string $path The pattern
+	 * @return array       The files
+	 *
+	 * @uses glob()
+	 * 
+	 * @throws IOException
+	 */
 	public static function files($path);
+	
+	/**
+	 * To be written
+	 * @throws Exception
+	 */
 	public static function all($path);
+
+	/**
+	 * To be written
+	 * @throws Exception
+	 */
 	public static function directories($path);
 	public static function makeDirectory($path, $mode, $recursive = false);
 	public static function copyDirectory($path, $dest);
