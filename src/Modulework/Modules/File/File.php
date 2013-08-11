@@ -310,11 +310,26 @@ class File
 		return $this->filesystem->chown($this->path, $owner);
 	}
 
+	/**
+	 * Set the permissions for this file
+	 * @uses chmod()
+	 * @param string $permissions The new permissions of this file
+	 *
+	 * @throws FileNotFoundException (chmod())
+	 * @throws IOException (chmod())
+	 */
 	public function setPermissions($permissions)
 	{
 		return $this->filesystem->setPermissions($this->path, $permissions);
 	}
 
+	/**
+	 * Get the current permissions of this file
+	 * @return null
+	 * 
+	 * @throws FileNotFoundException (FileSystemInterface::getPermissions())
+	 * @throws Exception (FileSystemInterface::getPermissions())
+	 */
 	public function getPermissions()
 	{
 		return $this->filesystem->getPermissions($this->path);
