@@ -48,7 +48,20 @@ interface FileSystemInterface
 	public static function deleteDirectory($path, $preserve = false);
 	public static function emptyDirectory($path);
 
+	/**
+	 * Checks if a file exists
+	 * @param  string $path The path to the file
+	 * @return bool       Whether the file exists
+	 */
 	public static function exists($path);
+
+	/**
+	 * Create the file
+	 * @param string $path The filename
+	 * @return int The bytes written
+	 *
+	 * @throws IOException
+	 */
 	public static function create($path);
 	public static function extension($path);
 	public static function get($path);
