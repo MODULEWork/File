@@ -63,8 +63,28 @@ interface FileSystemInterface
 	 * @throws IOException
 	 */
 	public static function create($path);
+
+	/**
+	 * Returns the extension for the given file
+	 * @param  string $path The path to the file
+	 * @return string       The extension
+	 */
 	public static function extension($path);
+
+	/**
+	 * Returns the contents of the file
+	 * @param  string $path The path to the file
+	 * @return string       The file' s content
+	 *
+	 * @throws \Modulework\Modules\File\Exceptions\FileNotFoundException
+	 */
 	public static function get($path);
+
+	/**
+	 * Returns the content of a remote file
+	 * @param  string $path The URL
+	 * @return string       The content
+	 */
 	public static function getRemote($path);
 	public static function size($path);
 	public static function put($path, $data);
